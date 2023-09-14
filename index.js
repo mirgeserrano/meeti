@@ -6,6 +6,7 @@ const expressEjsLayouts = require('express-ejs-layouts');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const flash= require('connect-flash')
+const passport= require('./config/passport')
 require('dotenv').config({path:'variables.env'})
 
 //Configuarion y modulo de la base de datos
@@ -45,9 +46,12 @@ app.use(session({
 
 }))
 
+//inicializar password
+app.use(passport.initialize())
+app.use(passport.session())
+
 //agrega Flash messages
 app.use(flash());
-
 
 //Middlware (usuario logeado, flash messaje, fecha catial)
 app.use ((req, res, next)=>{

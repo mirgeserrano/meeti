@@ -2,6 +2,8 @@ const express = require ('express');
 const router= express.Router();
 const homeController = require('../controllers/homeController')
 const usuarioController = require('../controllers/usuarioController')
+const authController = require('../controllers/authController')
+const adminController = require('../controllers/adminController')
 
 
 module.exports = function() {
@@ -15,7 +17,12 @@ router.get('/confirmar-cuenta/:correo',usuarioController.confimarCuenta)
 
 //Iniciar sesion
 router.get('/iniciar-sesion',usuarioController.formIniciarSesion)
+router.post('/iniciar-sesion',authController.autentificarUsuario)
 
+//panel de adminitracion
+router.get('/administracion',
+authController.usuarioAutenticado,
+adminController.panelAdminitracion)
 
 return router;
 } 

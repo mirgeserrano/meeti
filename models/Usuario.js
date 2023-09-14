@@ -52,8 +52,12 @@ const Usuarios = db.define("usuarios",{
 );
 
 //Metodo que verifica un passaword
-Usuarios.prototype.validarPassword = function(passaword){
-    return bcrypt.compareSync(passaword, this.passaword);
+Usuarios.prototype.validarPassword = function(password) {
+  return bcrypt.compareSync(password, this.password);
 }
+// Usuarios.prototype.hashPassword = function(password) {
+//   return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null );
+// }
+
 
 module.exports=Usuarios;

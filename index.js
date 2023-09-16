@@ -13,6 +13,8 @@ require('dotenv').config({path:'variables.env'})
 const db = require("./config/db.js");
 const { ExpressValidator } = require('express-validator');
 require('./models/Usuario.js')
+require('./models/Categoria.js')
+require('./models/Grupo.js')
 
 //conexion a la base de datos
 db.sync().then(() => console.log(' DB conectada')).catch((error)=>console.log(error))

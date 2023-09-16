@@ -7,7 +7,9 @@ exports.autentificarUsuario=passport.authenticate('local',{
  badRequestMessage: 'ambos campo son obligatorio'
 })
 
+//revisar si la seccion esta auntetificada
 exports.usuarioAutenticado=(req, res,next)=>{
+
     if (req.isAuthenticated()) {
         return next();
         

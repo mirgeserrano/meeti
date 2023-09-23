@@ -34,6 +34,7 @@ grupoController.formNuevoGrupo)
 
 router.post('/nuevo-grupo',
 authController.usuarioAutenticado,
+grupoController.subirImagen,
 grupoController.crearGrupo)
 
 

@@ -64,7 +64,8 @@ exports.formNuevoGrupo = async (req, res) =>{
     categorias
     });
 
-    }
+}
+
 
 
 exports.crearGrupo= async(req, res)=>{
@@ -97,4 +98,21 @@ exports.crearGrupo= async(req, res)=>{
 }
 
 
+exports.formEditarGrupo=async(req, res)=>{
+    //te etrae toda la informacion de un solo grupo
 
+    const consulta =[]
+    consulta.push( Grupos.findByPk(req.params.grupoId))
+    consulta.push( Categorias.findAll())
+    
+    //promise con await, multiples consulta
+   const[ grupo, categorias]= await Promise.all(consulta);
+
+console.log(grupo);
+res.render('editar-grupo', {
+    grupo,
+    nombrePagina: `Editar Grupo: ${grupo.nombre}`,
+    categorias
+});
+
+} 

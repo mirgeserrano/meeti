@@ -1,44 +1,41 @@
 
 <main class="contenedor contenedor-formularios no-padding">
     <h1><%- nombrePagina %></h1>
- <form action="/nuevo-grupo" class="default-form" method="POST" enctype="multipart/form-data">
-   
+ <form class="default-form" method="POST">
+    
     <div class="campo">
         <label for="">Nombre</label>
-        <input type="text" name="nombre" id="nombre" placeholder="Ingresa tu nombre"> 
+        <input type="text" name="nombre"  value="<%= grupo.nombre %>" valid="nombre" placeholder="Ingresa tu nombre"> 
     </div>
-   
-    <div class="campo">
+
+    <div class="campo ">
     <div class="contenedor-editor ">
-        <input id="x" type="hidden" name="descripcion">
+        <input id="x" type="hidden" name="descripcion" value="<%= grupo.descripcion %>">
         <trix-editor input="x"></trix-editor>
     </div>
     </div>
-
+    
     <div class="campo">
         <label for="">Categoria</label>
         <select name="categoriaId" id="">
             <option value="">--Elige una categoria </option>
             <% categorias.forEach(categoria=>{ %>
-            <option value="<%= categoria.id %>"> <%= categoria.nombre %> </option>
-              
+            <option 
+                 value="<%= categoria.id %>"
+                 <%= (grupo.categoriaId === categoria.id) ? 'selected' : ''  %>
+                > 
+                <%= categoria.nombre %> </option>
             <% })  %>
         </select>
     </div>
-
-    <div class="campo">
-       <label for="">imagen</label>
-       <input type="file" name="imagen">
-    </div>
-
+   
     <div class="campo">
         <label>Sitio web</label>
-        <input type="url" name="url" id="" placeholder="Sitio Web">
+        <input type="url" name="url" value="<%= grupo.url %>" id="" placeholder="Sitio Web">
     </div>
 
     <div class="campo">
-        <input type="submit" value="Crear Grupo" class="btn btn-rosa">
+        <input type="submit" value="Guardar cambio" class="btn btn-rosa">
     </div>
-    
  </form>
 </main>                                  

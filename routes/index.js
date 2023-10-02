@@ -37,6 +37,10 @@ authController.usuarioAutenticado,
 grupoController.subirImagen,
 grupoController.crearGrupo)
 
+//Editar grupo
+router.get('/editar-grupo/:grupoId', 
+authController.usuarioAutenticado, 
+grupoController.formEditarGrupo)
 
 return router;
 } 
